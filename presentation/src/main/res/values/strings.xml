@@ -1,0 +1,10 @@
+<resources>
+	<string name="app_name">Client GitbHub</string>
+
+	<!--App-->
+	<string name="network_connection_error_message">Check network connection</string>
+	<string name="error">Error</string>
+	<string name="ok">Ok</string>
+	<string name="cancel">Cancel</string>
+	<string name="server_error">Please try againe later</string>
+</resources>
