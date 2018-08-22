@@ -40,6 +40,7 @@ dependencies {
     implementation dataDependencies.retrofit
     implementation dataDependencies.rxJava
     implementation dataDependencies.gson
+    implementation dataDependencies.javax
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

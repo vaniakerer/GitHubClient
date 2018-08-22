@@ -6,12 +6,13 @@ import githubclient.interactor.base.BaseInteractor
 import githubclient.observer.BaseSingleObserver
 import githubclient.repository.FoldersRepository
 import io.reactivex.disposables.CompositeDisposable
+import javax.inject.Inject
 
 /**
  * @author Ivan Kerer
  * @since  18/08/2018
  */
-class FoldersInteractor  constructor(
+class FoldersInteractor @Inject constructor(
         val foldersRepository: FoldersRepository,
         threadExecutor: ThreadExecutor,
         postExecutionThread: PostExecutionThread,

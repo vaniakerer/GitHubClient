@@ -5,6 +5,7 @@ import android.app.Application
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
+import githubclient.com.clientgitbhub.di.app.DaggerAppComponent
 import javax.inject.Inject
 
 
@@ -13,7 +14,6 @@ import javax.inject.Inject
  * @since 21/08/2018
  */
 class App : Application(), HasActivityInjector {
-
     @Inject
     lateinit var activityInjector: DispatchingAndroidInjector<Activity>
 
@@ -22,7 +22,5 @@ class App : Application(), HasActivityInjector {
         DaggerAppComponent.create().inject(this)
     }
 
-    override fun activityInjector(): AndroidInjector<Activity>? {
-        return activityInjector
-    }
+    override fun activityInjector(): AndroidInjector<Activity>? = activityInjector
 }

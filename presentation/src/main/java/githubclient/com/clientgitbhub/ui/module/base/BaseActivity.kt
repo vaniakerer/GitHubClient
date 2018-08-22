@@ -2,9 +2,11 @@ package githubclient.com.clientgitbhub.ui.module.base
 
 import android.os.Bundle
 import android.support.annotation.LayoutRes
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import dagger.android.AndroidInjection
+import dagger.android.DaggerActivity
 import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
 /**
  * @author Ivan Kerer
@@ -12,14 +14,16 @@ import dagger.android.support.DaggerAppCompatActivity
  */
 
 abstract class BaseActivity<V : BaseContract.BaseView, P : BaseContract.BasePresenter<V>>
-    : AppCompatActivity(), BaseContract.BaseView {
+    : DaggerActivity(), BaseContract.BaseView {
 
+    @Inject
     protected lateinit var presenter: P
 
     @LayoutRes
     abstract fun getLayoutRes(): Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         configureView()
         presenter.attachView(this as V)//todo do something with warning!!!

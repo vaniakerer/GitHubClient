@@ -11,7 +11,7 @@ dependencies {
     def domainDEpencies = rootProject.ext.domainDependencies
 
     implementation domainDependencies.rxJava
-    //implementation domainDependencies.javax
+    implementation domainDependencies.javax
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"//todo move to dependencies.gradle
 }
