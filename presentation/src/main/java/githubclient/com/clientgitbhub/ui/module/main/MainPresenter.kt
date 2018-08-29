@@ -3,6 +3,7 @@ package githubclient.com.clientgitbhub.ui.module.main
 import githubclient.com.clientgitbhub.observer.BasePresentationSingleObserver
 import githubclient.com.clientgitbhub.ui.module.base.BaseViewPresenter
 import githubclient.interactor.FoldersInteractor
+import githubclient.model.RepositoryModel
 import javax.inject.Inject
 
 /**
@@ -11,8 +12,6 @@ import javax.inject.Inject
  */
 class MainPresenter @Inject constructor(val foldersInteractor: FoldersInteractor) :
         BaseViewPresenter<MainContract.View>(), MainContract.Presenter {
-
-
     override fun attachView(view: MainContract.View) {
         super.attachView(view)
         loadFolders()
@@ -20,10 +19,10 @@ class MainPresenter @Inject constructor(val foldersInteractor: FoldersInteractor
 
     private fun loadFolders() {
         foldersInteractor.getFolders(
-                object : BasePresentationSingleObserver<String>(view!!) {
-                    override fun onSuccess(value: String) {
+                object : BasePresentationSingleObserver<List<RepositoryModel>>(view!!) {
+                    override fun onSuccess(value: List<RepositoryModel>) {
                         super.onSuccess(value)
-                        view?.showErrorMessage(value)
+                        view?.showErrorMessage(value.size.toString())
                     }
                 }
         )

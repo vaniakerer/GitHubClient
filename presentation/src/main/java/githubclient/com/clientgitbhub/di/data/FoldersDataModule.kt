@@ -1,9 +1,9 @@
 package githubclient.com.clientgitbhub.di.data
 
-import dagger.Binds
 import dagger.Module
-import githubclient.com.clientgitbhub.di.scope.ActivityScope
+import dagger.Provides
 import githubclient.com.data.repository.FoldersRepositoryImpl
+import githubclient.com.data.source.network.api.service.builder.GitHubServiceBuilder
 import githubclient.repository.FoldersRepository
 
 /**
@@ -12,8 +12,10 @@ import githubclient.repository.FoldersRepository
  */
 
 @Module
-abstract class FoldersDataModule {
-    @ActivityScope
-    @Binds
-    abstract fun provideFoldersRepository(repository: FoldersRepositoryImpl): FoldersRepository
+class FoldersDataModule {
+    @Provides
+    fun provideFoldersRepository(repository: FoldersRepositoryImpl): FoldersRepository = repository
+
+    @Provides
+    fun provideApiService(gitHubServiceBuilder: GitHubServiceBuilder) = gitHubServiceBuilder.build()
 }

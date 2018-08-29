@@ -1,5 +1,6 @@
 package githubclient.repository
 
+import githubclient.model.RepositoryModel
 import io.reactivex.Single
 
 /**
@@ -7,5 +8,5 @@ import io.reactivex.Single
  * @since  18/08/2018
  */
 interface FoldersRepository {
-    fun getFolders(): Single<String>
+    fun getFolders(): Single<List<RepositoryModel>>
 }

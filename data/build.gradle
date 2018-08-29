@@ -41,6 +41,9 @@ dependencies {
     implementation dataDependencies.rxJava
     implementation dataDependencies.gson
     implementation dataDependencies.javax
+    implementation dataDependencies.retrofitGsonConverter
+    implementation dataDependencies.retrofitRxAdapter
+    implementation dataDependencies.okHttpLogginingInterceptor
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

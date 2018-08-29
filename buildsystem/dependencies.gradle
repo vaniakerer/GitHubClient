@@ -45,6 +45,9 @@ ext {
             retrofit: "com.squareup.retrofit2:retrofit:${retrofit}",
             rxJava  : "io.reactivex.rxjava2:rxjava:${rxJava}",
             gson    : "com.google.code.gson:gson:${gson}",
-            javax   : "javax.inject:javax.inject:${javax}"
+            javax   : "javax.inject:javax.inject:${javax}",
+            retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:${retrofit}",
+            retrofitRxAdapter    : "com.squareup.retrofit2:adapter-rxjava2:${retrofit}",
+            okHttpLogginingInterceptor: "com.squareup.okhttp3:logging-interceptor:${okHttp}",
     ]
 }

@@ -1,4 +1,4 @@
-package githubclient.com.data.source.network.api.base
+package githubclient.com.data.source.network.datasource.base
 
 /**
  * @author Ivan Kerer

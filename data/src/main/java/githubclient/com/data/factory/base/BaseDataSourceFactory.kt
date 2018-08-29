@@ -2,7 +2,7 @@ package githubclient.com.data.factory.base
 
 import githubclient.com.data.source.db.base.BaseDbDataSource
 import githubclient.com.data.source.local.base.BaseLocalDataSource
-import githubclient.com.data.source.network.api.base.BaseApiDataSource
+import githubclient.com.data.source.network.datasource.base.BaseApiDataSource
 
 /**
  * @author Ivan Kerer
