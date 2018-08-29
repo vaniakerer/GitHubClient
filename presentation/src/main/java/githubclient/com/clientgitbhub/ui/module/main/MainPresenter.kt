@@ -4,14 +4,17 @@ import githubclient.com.clientgitbhub.observer.BasePresentationSingleObserver
 import githubclient.com.clientgitbhub.ui.module.base.BaseViewPresenter
 import githubclient.interactor.FoldersInteractor
 import githubclient.model.RepositoryModel
+import githubclient.com.clientgitbhub.model.mapper.RepoisitoriesViewModelMapper
 import javax.inject.Inject
 
 /**
  * @author Ivan Kerer
  * @since  17/08/2018
  */
-class MainPresenter @Inject constructor(val foldersInteractor: FoldersInteractor) :
-        BaseViewPresenter<MainContract.View>(), MainContract.Presenter {
+class MainPresenter @Inject constructor(
+        val foldersInteractor: FoldersInteractor,
+        val repositoryViewModelMapper: RepoisitoriesViewModelMapper
+) : BaseViewPresenter<MainContract.View>(), MainContract.Presenter {
     override fun attachView(view: MainContract.View) {
         super.attachView(view)
         loadFolders()
@@ -22,7 +25,7 @@ class MainPresenter @Inject constructor(val foldersInteractor: FoldersInteractor
                 object : BasePresentationSingleObserver<List<RepositoryModel>>(view!!) {
                     override fun onSuccess(value: List<RepositoryModel>) {
                         super.onSuccess(value)
-                        view?.showErrorMessage(value.size.toString())
+                        view?.showRepositories(repositoryViewModelMapper.transformList(value))
                     }
                 }
         )

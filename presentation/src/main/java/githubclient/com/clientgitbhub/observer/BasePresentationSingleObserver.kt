@@ -17,6 +17,11 @@ open class BasePresentationSingleObserver<T>(private val baseView: BaseContract.
         baseView.setLoading(true)
     }
 
+    override fun onSuccess(value: T) {
+        super.onSuccess(value)
+        baseView.setLoading(false)
+    }
+
     override fun onApiError(apiError: ApiError) {
         if (isDisposed) return
         super.onApiError(apiError)

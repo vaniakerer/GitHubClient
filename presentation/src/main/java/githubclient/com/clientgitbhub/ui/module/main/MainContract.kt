@@ -1,5 +1,6 @@
 package githubclient.com.clientgitbhub.ui.module.main
 
+import githubclient.com.clientgitbhub.model.RepositoryViewModel
 import githubclient.com.clientgitbhub.ui.module.base.BaseContract
 
 /**
@@ -8,7 +9,9 @@ import githubclient.com.clientgitbhub.ui.module.base.BaseContract
  */
 interface MainContract {
 
-    interface View : BaseContract.BaseView
+    interface View : BaseContract.BaseView{
+        fun showRepositories(repositories : List<RepositoryViewModel>)
+    }
 
     interface Presenter : BaseContract.BasePresenter<View>
 }

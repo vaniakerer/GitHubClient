@@ -32,6 +32,7 @@ dependencies {
     implementation project(":data")
 
     implementation presentationDependencies.supportAppCompat
+    implementation presentationDependencies.recyclerView
     implementation presentationDependencies.rxJava
     implementation presentationDependencies.rxAndroid
     implementation presentationDependencies.dagger

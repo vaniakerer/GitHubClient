@@ -25,9 +25,13 @@ abstract class BaseActivity<V : BaseContract.BaseView, P : BaseContract.BasePres
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
+        setContentView(getLayoutRes())
+        initViews()
         configureView()
         presenter.attachView(this as V)//todo do something with warning!!!
     }
+
+    abstract fun initViews()
 
     abstract fun configureView()
 
