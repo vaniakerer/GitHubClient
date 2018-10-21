@@ -18,6 +18,8 @@ class RepositoriesListAdapter : BaseListAdapter<RepositoryViewModel, Repositorie
     override fun createViewHolder(view: View) = RepositoriesViewHolder(view)
 
     override fun onBindViewHolder(holder: RepositoriesViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
+
         val repository = mData[position]
 
         holder.txtName.text = repository.name

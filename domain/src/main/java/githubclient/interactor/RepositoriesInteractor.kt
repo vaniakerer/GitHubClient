@@ -5,7 +5,7 @@ import githubclient.executor.ThreadExecutor
 import githubclient.interactor.base.BaseInteractor
 import githubclient.model.RepositoryModel
 import githubclient.observer.BaseSingleObserver
-import githubclient.repository.FoldersRepository
+import githubclient.repository.ProjectsRepository
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
@@ -13,8 +13,8 @@ import javax.inject.Inject
  * @author Ivan Kerer
  * @since  18/08/2018
  */
-class FoldersInteractor @Inject constructor(
-        val foldersRepository: FoldersRepository,
+class RepositoriesInteractor @Inject constructor(
+        private val projectsRepository: ProjectsRepository,
         threadExecutor: ThreadExecutor,
         postExecutionThread: PostExecutionThread,
         compositeDisposable: CompositeDisposable
@@ -24,7 +24,13 @@ class FoldersInteractor @Inject constructor(
         compositeDisposable
 
 ) {
-    fun getFolders(observer: BaseSingleObserver<List<RepositoryModel>>) {
-        execute(foldersRepository.getFolders(), observer)
+
+    fun getRepositories(observer: BaseSingleObserver<List<RepositoryModel>>) {
+        execute(projectsRepository.getProjects(), observer)
     }
+
+    fun getRepository(observer: BaseSingleObserver<RepositoryModel>, repositoryId: Long) {
+        execute(projectsRepository.getProject(repositoryId), observer)
+    }
+
 }

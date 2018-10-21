@@ -10,10 +10,11 @@ import android.view.ViewGroup
  * @author Ivan Kerer
  * @since  29/08/2018
  */
-abstract class BaseListAdapter<D, ViewHolder : RecyclerView.ViewHolder> : RecyclerView
-.Adapter<ViewHolder>() {
+abstract class BaseListAdapter<D, ViewHolder : RecyclerView.ViewHolder>
+    : RecyclerView.Adapter<ViewHolder>() {
 
     protected val mData: ArrayList<D> = ArrayList()
+    protected var onItemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = createViewHolder(
             LayoutInflater
@@ -21,7 +22,16 @@ abstract class BaseListAdapter<D, ViewHolder : RecyclerView.ViewHolder> : Recycl
                     .inflate(getLayoutRes(), parent, false)
     )
 
-    override fun getItemCount(): Int = mData!!.size
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        onItemClickListener?.let {
+            val itItemClickListener = it
+            holder.itemView.rootView.setOnClickListener {
+                itItemClickListener.onItemClick(position)
+            }
+        }
+    }
+
+    override fun getItemCount(): Int = mData.size
 
     fun setNewData(newData: List<D>) {
         mData.clear()
@@ -30,7 +40,11 @@ abstract class BaseListAdapter<D, ViewHolder : RecyclerView.ViewHolder> : Recycl
     }
 
     @LayoutRes
-    protected abstract fun getLayoutRes(): Int;
+    protected abstract fun getLayoutRes(): Int
 
     protected abstract fun createViewHolder(view: View): ViewHolder
+}
+
+interface OnItemClickListener {
+    fun onItemClick(position: Int)
 }

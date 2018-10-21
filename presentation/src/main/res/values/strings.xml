@@ -6,5 +6,5 @@
 	<string name="error">Error</string>
 	<string name="ok">Ok</string>
 	<string name="cancel">Cancel</string>
-	<string name="server_error">Please try againe later</string>
+	<string name="server_error">Please try again later</string>
 </resources>

@@ -1,5 +1,7 @@
 package githubclient.com.clientgitbhub.ui.module.base
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.widget.Toast
@@ -55,6 +57,10 @@ abstract class BaseActivity<V : BaseContract.BaseView, P : BaseContract.BasePres
 
     override fun showApiError(messageRes: Int) {
 
+    }
+
+    companion object {
+        public inline fun <reified T> createIntent(context: Context) = Intent(context, T::class.java)
     }
 
 }

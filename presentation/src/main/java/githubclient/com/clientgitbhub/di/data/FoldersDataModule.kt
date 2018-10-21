@@ -2,9 +2,9 @@ package githubclient.com.clientgitbhub.di.data
 
 import dagger.Module
 import dagger.Provides
-import githubclient.com.data.repository.FoldersRepositoryImpl
+import githubclient.com.data.repository.ProjectsRepositoryImpl
 import githubclient.com.data.source.network.api.service.builder.GitHubServiceBuilder
-import githubclient.repository.FoldersRepository
+import githubclient.repository.ProjectsRepository
 
 /**
  * @author Ivan Kerer
@@ -14,7 +14,7 @@ import githubclient.repository.FoldersRepository
 @Module
 class FoldersDataModule {
     @Provides
-    fun provideFoldersRepository(repository: FoldersRepositoryImpl): FoldersRepository = repository
+    fun provideFoldersRepository(repository: ProjectsRepositoryImpl): ProjectsRepository = repository
 
     @Provides
     fun provideApiService(gitHubServiceBuilder: GitHubServiceBuilder) = gitHubServiceBuilder.build()
