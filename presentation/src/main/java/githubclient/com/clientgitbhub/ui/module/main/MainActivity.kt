@@ -4,9 +4,11 @@ import android.support.annotation.LayoutRes
 import android.support.v7.widget.RecyclerView
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
 import githubclient.com.clientgitbhub.R
 import githubclient.com.clientgitbhub.model.RepositoryViewModel
 import githubclient.com.clientgitbhub.ui.adapter.list.RepositoriesListAdapter
+import githubclient.com.clientgitbhub.ui.adapter.list.base.OnItemClickListener
 import githubclient.com.clientgitbhub.ui.module.base.BaseActivity
 import githubclient.com.clientgitbhub.ui.widget.ProgressView
 
@@ -14,11 +16,10 @@ import githubclient.com.clientgitbhub.ui.widget.ProgressView
  * @author Ivan Kerer
  * @since  17/08/2018
  */
-class MainActivity : BaseActivity<MainContract.View, MainContract.Presenter>(), MainContract.View {
-
+class MainActivity : BaseActivity<MainContract.View, MainContract.Presenter>(), MainContract.View, OnItemClickListener {
     private lateinit var rvRepositories: RecyclerView
-    private lateinit var progressView: ProgressView
 
+    private lateinit var progressView: ProgressView
     private lateinit var repositoriesAdapter: RepositoriesListAdapter
 
     @LayoutRes
@@ -42,9 +43,13 @@ class MainActivity : BaseActivity<MainContract.View, MainContract.Presenter>(), 
         progressView.visibility = if (isLoading) VISIBLE else GONE
     }
 
+    override fun onItemClick(position: Int) {
+        Toast.makeText(this, "clicked $position", Toast.LENGTH_SHORT).show()
+    }
+
     private fun initRecycler() {
         repositoriesAdapter = RepositoriesListAdapter()
         rvRepositories.adapter = repositoriesAdapter
-        repositoriesAdapter.set
+        repositoriesAdapter.onItemClickListener = this
     }
 }

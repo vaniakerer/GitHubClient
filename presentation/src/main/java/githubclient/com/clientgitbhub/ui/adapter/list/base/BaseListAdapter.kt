@@ -14,7 +14,7 @@ abstract class BaseListAdapter<D, ViewHolder : RecyclerView.ViewHolder>
     : RecyclerView.Adapter<ViewHolder>() {
 
     protected val mData: ArrayList<D> = ArrayList()
-    protected var onItemClickListener: OnItemClickListener? = null
+    public var onItemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = createViewHolder(
             LayoutInflater
